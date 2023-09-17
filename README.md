@@ -1,1 +1,1 @@
-# project_manager
+# Aplicatie Web de gestionare a proiectelor
