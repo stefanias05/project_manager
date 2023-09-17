@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}
+    Login
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="card">
+                <div class="card-header text-center">
+                    Login in your account
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="card-body ">
+                        {{ form.as_p }}
+                    </div>
+                    <div class="card-footer text-center">
+                        <button type="submit" class="btn btn-outline-danger">Login</button>
+                        <a href="#" class="btn btn-outline-danger">Forgot your password?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

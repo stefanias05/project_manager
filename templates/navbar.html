@@ -1,0 +1,28 @@
+<nav id="navbar" class="navbar">
+    <ul>
+        <li><a href="{% url 'home' %}" class="active">Home</a></li>
+        {% if user.is_authenticated %}
+            <li class="dropdown"><a href="#"><span>Projects</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                    <li><a href="{% url 'create-project' %}">Add Project</a></li>
+                    <li><a href="{% url 'list-of-projects' %}">View Projects</a></li>
+                    <li><a href="#">My Projects</a></li>
+                </ul>
+            </li>
+            <li class="dropdown"><a href="#"><span>Tasks</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                    <li><a href="{% url 'add-task' %}">Add Task</a></li>
+                    <li><a href="{% url 'list-of-taks' %}">My Tasks</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'team-members' %}">Team</a></li>
+            <li><a href="#">Calendar</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="{% url 'logout' %}" class="getstarted">Logout, {{ user.first_name }} </a></li>
+        {% else %}
+            <li><a href="{% url 'login' %}" class="getstarted">Log In </a></li>
+            <li><a href="{% url 'create-member' %}" class="getstarted">Get Started</a></li>
+        {% endif %}
+    </ul>
+    <i class="bi bi-list mobile-nav-toggle"></i>
+</nav>

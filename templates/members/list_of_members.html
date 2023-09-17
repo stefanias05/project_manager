@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} TeamWork {% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <p class="team">People are everything</p>
+            <br>
+            <br>
+            <br>
+            <br>
+            {% for member in allmembers %}
+                <div class="col-md-3">
+                    <div class="card">
+                        {% if member.profile %}
+                            <img src="{{ member.profile.url }}" class="card-img-top" alt="No image">
+                        {% else %}
+                            <p>No image</p>
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ member.first_name }} {{ member.last_name }}</h5>
+                            <p class="card-text">{{ member.position }}</p><br>
+                            <p class="card-text"><b>Email:</b> {{ member.email }}</p>
+                            <a href="{% url 'completed-projects' member_id=member.id %}"
+                               class="btn btn-danger">See {{ member.first_name }}'s completed projects</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+{% endblock %}

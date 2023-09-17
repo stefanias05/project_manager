@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Completed Projects {% endblock %}
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <table class="table" id="memberprojectcompleted">
+                    <thead>
+                    <tr>
+                        <th>Project Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for project in completed_projects %}
+                        <tr>
+                            <td>{{ project.name }}</td>
+                            <td>{{ project.start_date|date:'d-m-Y' }}</td>
+                            <td>{{ project.end_date|date:'d-m-Y' }}</td>
+                            <td>{{ project.status }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td> {{ member.first_name }} has no completed projects</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src=" https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="{% static 'js/table.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %} Create Project {% endblock %}
+{%  block content %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success" role="alert">
+                            <h3><strong>Congrats!</strong></h3> {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Let's Work on it..</h2>
+                    </div>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="card-body">
+                            {{ form.as_p }}
+                        </div>
+                        <div class="card-footer text-center">
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#addModal">
+                                Add Project
+                            </button>
+                            <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="ModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="ModalLabel">Attention!</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4 class="text-primary">Are you sure you want to add the project {{ project.name}} ?</h4>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                                                No
+                                            </button>
+                                            <button type="submit" class="btn btn-success" >Yes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{% url 'home' %}" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
