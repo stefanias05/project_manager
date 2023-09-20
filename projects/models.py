@@ -1,17 +1,10 @@
 from django.contrib.auth.models import User
-from django.db import models
 
-# Create your models here.
-from django.db import models
 
 # Create your models here.
 from django.db import models
 
 from members.models import MemberUser
-
-
-# from members.models import MemberUser
-
 
 # Create your models here.
 
@@ -36,7 +29,7 @@ class Project(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
-    owner = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     team_members = models.ManyToManyField(MemberUser, related_name='team_project')
 
 

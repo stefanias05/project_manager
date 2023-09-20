@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
+
+
 # Build paths inside the projects like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,6 +28,7 @@ SECRET_KEY = 'django-insecure-gd56b$_1*hr=4%1dc=z^^+rzyijjzur5dp+pxrm4$zgo30#8-x
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -126,6 +129,7 @@ STATICFILES_DIRS =(os.path.join(BASE_DIR,'static/'),)
 
 MEDIA_URL ='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 
 LOGIN_URL = '/login/'

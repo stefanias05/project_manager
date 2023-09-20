@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %} Tasks {% endblock %}
-
+{% load static %}
 {% block content %}
     <br>
     <br>
@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 {% if alltasks %}
-                    <table class="table table-bordered border-primary">
+                    <table class="table" id="projecttable">
                         <thead>
                         <th>Title</th>
                         <th>Description</th>
@@ -31,7 +31,7 @@
                                 <td>{{ task.deadline|date:'d-m-Y' }}</td>
                                 <td>{{ task.project }}</td>
                                 <td>
-                                    <a href="{% url 'delete-task' task.id %}" class="btn btn-success">Delete</a>
+                                    <a href="{% url 'delete-task' task.id %}" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -41,4 +41,8 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src=" https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="{% static 'js/table.js' %}"></script>
 {% endblock %}

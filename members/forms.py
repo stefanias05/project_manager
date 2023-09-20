@@ -3,7 +3,7 @@ from django.forms import TextInput, EmailInput
 from members.models import MemberUser
 from django import  forms
 
-from projects.models import Project
+# from projects.models import Project
 
 
 class NewAuthenticationForm(AuthenticationForm):

@@ -71,19 +71,14 @@ class ProjectAllocationMembersForm(forms.Form):
     team_members = forms.ModelMultipleChoiceField(
         queryset=MemberUser.objects.all(),
         widget=forms.CheckboxSelectMultiple,
-        label="Select memebrs")
+        label="Select memebers",
+        required= False
+    )
+    
 
-# class ProjectAllocationMembersForm(forms.ModelForm):
-#     class Meta:
-#         model = Project
-#         fields = ['team_members']
-#         widgets ={
-#             'team_members': forms.CheckboxSelectMultiple
-#         }
-#
-#     def __init__(self, *args, **kwargs):
-#         super.__init__(*args, **kwargs)
-#         self.fields['team_members'].queryset = MemberUser.objects.all()
+        
+    
+    
 
 
 

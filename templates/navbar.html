@@ -6,7 +6,7 @@
                 <ul>
                     <li><a href="{% url 'create-project' %}">Add Project</a></li>
                     <li><a href="{% url 'list-of-projects' %}">View Projects</a></li>
-                    <li><a href="#">My Projects</a></li>
+                    <li><a href="{% url 'my-projects' %}">My Projects</a></li>
                 </ul>
             </li>
             <li class="dropdown"><a href="#"><span>Tasks</span> <i class="bi bi-chevron-down"></i></a>
@@ -16,8 +16,10 @@
                 </ul>
             </li>
             <li><a href="{% url 'team-members' %}">Team</a></li>
-            <li><a href="#">Calendar</a></li>
             <li><a href="#">Dashboard</a></li>
+            <li>
+                <a href="#">Notifications <span class="badge text-bg-secondary"></span></a>
+            </li>
             <li><a href="{% url 'logout' %}" class="getstarted">Logout, {{ user.first_name }} </a></li>
         {% else %}
             <li><a href="{% url 'login' %}" class="getstarted">Log In </a></li>

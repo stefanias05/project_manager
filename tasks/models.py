@@ -2,6 +2,7 @@ from datetime import timezone
 
 from django.db import models
 
+from members.models import MemberUser
 from projects.models import Project
 
 
@@ -23,6 +24,7 @@ class Task(models.Model):
     status = models.CharField(max_length=100,choices=status_task)
     priority = models.CharField(max_length=100, choices=priority_task)
     deadline = models.DateField()
+    user = models.ForeignKey(MemberUser, on_delete=models.CASCADE, null=True)
 
 
     created_at = models.DateTimeField(auto_now_add=True)
