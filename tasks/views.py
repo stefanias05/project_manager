@@ -38,7 +38,6 @@ class CreateTask(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return success_message
 
 
-
 @login_required
 def user_task(request):
     user = request.user
