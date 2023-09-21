@@ -19,6 +19,7 @@ class CreateTask(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Task
     success_url = reverse_lazy('add-task')
 
+
     def get_initial(self):
         super(CreateTask, self).get_initial()
         user = self.request.user
