@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
@@ -87,10 +88,16 @@ def allocate_member_project(request, project_id):
     if request.method == 'POST':
         form = ProjectAllocationMembersForm(request.POST)
         if form.is_valid():
-            selected_member = form.cleaned_data['team_members']
-            for member in selected_member:
-                project.team_members.add(MemberUser.objects.get(id=member.id))
-                project.save()
+            all_members = form.cleaned_data['team_members'] #iau toti membrii din aplicatie
+            selected_memeber = project.team_members.all() #iau toti membrii din proiect
+            print(selected_memeber)
+            allocate_member_id = [member.id for member in selected_memeber]
+            print(allocate_member_id)
+            #cum exclud id-urile deja existente in lista de allocate_member_id
+            for member in selected_memeber:
+                if member.id not in allocate_member_id:
+                    project.team_members.add(MemberUser.objects.get(id=member.id))
+                    project.save()
             return redirect('detail-project', project.id)
         else:
             form = ProjectAllocationMembersForm()
