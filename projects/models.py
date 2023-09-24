@@ -23,7 +23,7 @@ class Project(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField( null=True)
     start_date = models.DateField(null=None)
-    end_date = models.DateField(null=None)
+    end_date = models.DateField()
     status = models.CharField(max_length=30, choices=project_status)
     priority = models.CharField(max_length=30, choices=priority_project)
 

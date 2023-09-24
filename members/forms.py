@@ -20,12 +20,13 @@ class MemberRegisterForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['username'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter your username'})
+        # self.fields['username'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter your username'})
         self.fields['password1'].widget.attrs.update(
             {'class': 'form-control', 'placeholder': 'Please choose your password'})
         self.fields['password2'].widget.attrs.update(
             {'class': 'form-control', 'placeholder': 'Please confirm your password'})
         self.fields['username']=forms.CharField(required=True, min_length=5, max_length=15)
+        self.fields['username'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter your username'})
 
     class Meta:
         model = MemberUser
