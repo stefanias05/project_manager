@@ -1,17 +1,38 @@
 {% extends 'base.html' %}
 {% block title %} {{ project }} {% endblock %}
 {% block content %}
+    <br xmlns="http://www.w3.org/1999/html">
     <br>
     <br>
     <br>
     <br>
-    <br>
-    <div class="container-fluid">
+    <div class="container-fluid" style="background-color: whitesmoke">
         <div class="row">
-            <div class="col-md-3">
-                <h1> Detalii despre proiect, membrii asignati pe proiect.<br>
-                    Optiune de update, detele si add memeber doar pt owner</h1>
+            <div class="col-md-6 offset-md-3">
+                <header style="color: #d9232d; text-align: center">
+                    <h1><strong>{{ project.name }}</strong></h1>
+                </header>
+                <main style="background-color: whitesmoke">
+                    <section>
+                        <h4><strong>Project Description:</strong></h4>
+                        <span class="description">{{ project.description }}</span>
+                    </section><br><br>
+                    <section>
+                    <h4><strong>Project Members:</strong></h4>
+                    <span class="members">
+                        {% if project.team_members.name %}
+                            <h5>{{ project.team_members.name }}</h5>
+                        {% else %}
+                            <h5>No members yet</h5>
+                        {% endif %}
+                    </span>
+                    </section>
 
+                </main>
+                <footer class="text-center">
+                    <h1>
+                        ar merge o sectiune de comentarii </h1>
+                </footer>
             </div>
         </div>
     </div>

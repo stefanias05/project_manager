@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 {% load static %}
 {% block title %} {% endblock %}
@@ -14,6 +13,7 @@
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 {% if allprojects %}
+                    <h2 style="color: #d9232d"><strong>You are owner for:</strong></h2><br>
                     <table class="table" id="projecttable">
                         <thead>
                         <th> Name</th>
@@ -33,18 +33,46 @@
                                 <td>{{ project.end_date|date:'d-m-Y' }}</td>
                                 <td>
                                     <div class="btn-group dropend">
-                                            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    More Actions
-                                            </button>
+                                        <button type="button" class="btn btn-danger dropdown-toggle"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                            More Actions
+                                        </button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="{% url 'update-project' project.id %}" class="dropdown-item">Update Project</a> </li>
-                                            <li><a href="{% url 'delete-project' project.id %}" class="dropdown-item">Delete Project</a> </li>
-                                            <li><a href="#" class="dropdown-item">See project members</a> </li>
+                                            <li><a href="{% url 'update-project' project.id %}"
+                                                   class="dropdown-item">Update Project</a></li>
+                                            <li><a href="{% url 'delete-project' project.id %}"
+                                                   class="dropdown-item">Delete Project</a></li>
+                                            <li><a href="#" class="dropdown-item">See project members</a></li>
                                             <li><a href="{% url 'add-members-project' project_id=project.id %}"
                                                    class="dropdown-item">
                                                 Add members </a></li>
                                         </ul>
                                     </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table><br><br>
+                    <h2 style="color: #d9232d"><strong>The projects you are assigned:</strong></h2>
+                    <table class="table" id="projecttablee">
+                        <thead>
+                        <th> Name</th>
+                        <th>Description</th>
+                        <th> Start Date</th>
+                        <th> Status</th>
+                        <th> Timeline</th>
+                        <th> Action</th>
+                        </thead>
+                        <tbody>
+                        {% for project in projectsmember %}
+                            <tr>
+                                <td> {{ project.name }}</td>
+                                <td>{{ project.description }}</td>
+                                <td>{{ project.start_date|date:'d-m-Y' }}</td>
+                                <td>{{ project.status }}</td>
+                                <td>{{ project.end_date|date:'d-m-Y' }}</td>
+                                <td>
+                                    <a href="{% url 'detail-project' project.id %}" class=" btn btn-danger">View Details </a>
                                 </td>
                             </tr>
                         {% endfor %}

@@ -205,7 +205,7 @@ Header
 }
 #header .logo a {
   color: #556270;
-  text-decoration: none;
+  text-decoration:none;
 }
 /*------------------------------
 Section General
@@ -306,12 +306,6 @@ Carousel
   align-content: center;
 }
 
-/*#hero .carouselExampleIndicators{*/
-/*  color: black;*/
-/*  font-size: 24px;*/
-/*  font-weight: 900;*/
-/*  width: auto;*/
-/*  text-align: center;}*/
 
 /*------------------------
 Form header and labels
@@ -349,3 +343,7 @@ team
   text-align: center;
 
 }
+/*-----------------
+Details
+ */
+

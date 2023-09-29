@@ -1,0 +1,21 @@
+{% block content %}
+    <div class="modal" tabindex="-1" role="dialog" id="detailModal">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+             role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title text-center" style="color: #d9232d"><strong>Detail {{ task }}</strong></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong> Description:</strong>{{ task.description }}</p><br>
+                    <p><strong> Project:</strong>{{ task.project }}<br>
+                    <p><strong> This task has a deadline in: </strong>{{ task.deadline }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

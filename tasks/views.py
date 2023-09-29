@@ -1,15 +1,12 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.messages.views import SuccessMessageMixin
-from django.http import request
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DeleteView
+from django.views.generic import DeleteView, DetailView
 
 from members.models import MemberUser
-from projects.models import Project
-from tasks.forms import TaskForm
+from tasks.forms import TaskForm, TaskUpdateForm
 from tasks.models import Task
 
 
@@ -37,6 +34,7 @@ from tasks.models import Task
 #         status_name = self.object.status
 #         success_message = f'You added the task "{task_name}" on your "{status_name}" "list!'
 #         return success_message
+
 @login_required
 def create_task(request):
     user = request.user
@@ -52,6 +50,7 @@ def create_task(request):
             form = TaskForm(request.user)
     return render(request, 'tasks/create_tasks.html', {'form':form})
 
+
 @login_required
 def user_task(request):
     user = request.user
@@ -62,4 +61,24 @@ def user_task(request):
 class DeleteViewTask(LoginRequiredMixin, DeleteView):
     model = Task
     template_name = 'tasks/delete-task.html'
+    success_url = reverse_lazy('list-of-taks')
+
+@login_required
+def update_task(request, task_id):
+    task_id = Task.objects.get(pk=task_id)
+    user = request.user
+    if request.method == 'POST':
+        form = TaskUpdateForm(user, request.POST, instance=task_id)
+        if form.is_valid():
+            form.save()
+            redirect('list-of-taks')
+    else:
+        form = TaskUpdateForm(user)
+
+    return render(request, 'tasks/update-task.html',{'form': form})
+
+
+class DetailTask(LoginRequiredMixin,DetailView):
+    model = Task
+    template_name = 'tasks/detail_task.html'
     success_url = reverse_lazy('list-of-taks')

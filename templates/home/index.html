@@ -3,6 +3,7 @@
 {% block title %} Project Manager {% endblock %}
 
 {% block content %}
+    {% if not user.is_authenticated %}
     <div class="container-fluid">
         <section id="hero">
             <div id="carouselExampleIndicators" class="carousel slide">
@@ -130,5 +131,6 @@
             </section>
         </main>
     </div>
+    {% endif %}
 
 {% endblock %}

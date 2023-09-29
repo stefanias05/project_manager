@@ -56,9 +56,13 @@ class CreateProjectView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return super(CreateProjectView, self).form_valid(form)
 
 
-class ProjectDetailView(LoginRequiredMixin, DetailView):
-    model = Project
-    template_name = 'projects/detail_project.html'
+# class ProjectDetailView(LoginRequiredMixin, DetailView):
+#     model = Project
+#     template_name = 'projects/detail_project.html'
+@login_required
+def detail_project(request, project_id):
+    project = Project.objects.get(pk=project_id)
+    return render(request, 'projects/detail_project.html', {'project': project})
 
 
 class UpdateProjectView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
@@ -88,22 +92,18 @@ def allocate_member_project(request, project_id):
     if request.method == 'POST':
         form = ProjectAllocationMembersForm(request.POST)
         if form.is_valid():
-            all_members = form.cleaned_data['team_members'] #iau toti membrii din aplicatie
-            selected_memeber = project.team_members.all() #iau toti membrii din proiect
-            print(selected_memeber)
-            allocate_member_id = [member.id for member in selected_memeber]
-            print(allocate_member_id)
-            #cum exclud id-urile deja existente in lista de allocate_member_id
-            for member in selected_memeber:
-                if member.id not in allocate_member_id:
-                    project.team_members.add(MemberUser.objects.get(id=member.id))
-                    project.save()
+            all_members = list(
+                form.cleaned_data['team_members'].values_list('id', flat=True))  # iau toti membrii din aplicatie
+            for member_id in all_members:
+                # if member.id not in allocate_member_id:
+                project.team_members.add(MemberUser.objects.get(id=member_id))
+                project.save()
             return redirect('detail-project', project.id)
-        else:
-            form = ProjectAllocationMembersForm()
+    else:
+        team_members = MemberUser.objects.exclude(
+            user_ptr_id__in=project.team_members.values_list("id", flat=False))
 
-    return render(request, 'projects/add_member.html', {'form': form,
-                                                        'project': project})
+        return render(request, 'projects/add_member.html', {'team_members': team_members})
 
 
 @login_required()
@@ -115,4 +115,5 @@ def user_project(request):
     """
     user = request.user  # stochez userul autentificat in var
     allprojects = Project.objects.filter(owner=user)
-    return render(request, 'projects/user_projects.html', {'allprojects': allprojects})
+    project_member = Project.objects.filter(team_members=user)
+    return render(request, 'projects/user_projects.html', {'allprojects': allprojects,'projectsmember': project_member})

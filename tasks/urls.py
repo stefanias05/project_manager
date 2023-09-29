@@ -5,6 +5,8 @@ from tasks import views
 urlpatterns =[
     path('add-task/', views.create_task, name='add-task'),
     path('list-taks/', views.user_task, name ='list-of-taks'),
-    path('delete-task/<int:pk>', views.DeleteViewTask.as_view(), name='delete-task')
+    path('delete-task/<int:pk>', views.DeleteViewTask.as_view(), name='delete-task'),
+    path('update-task/<int:task_id>',views.update_task, name = 'update_task'),
+    path('detail-task/<int:pk>', views.DetailTask.as_view(), name ='detail_task')
 
 ]
