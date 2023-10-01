@@ -1,38 +1,53 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %} {{ project }} {% endblock %}
 {% block content %}
-    <br xmlns="http://www.w3.org/1999/html">
     <br>
     <br>
     <br>
     <br>
-    <div class="container-fluid" style="background-color: whitesmoke">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <header style="color: #d9232d; text-align: center">
                     <h1><strong>{{ project.name }}</strong></h1>
+                    <h5><strong style="color: #556270">{{ project.status }}<br>{{ project.end_date }}</strong></h5>
                 </header>
-                <main style="background-color: whitesmoke">
+                <br>
+                <main>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Project Description</h4>
+                        </div>
+                        <div class="card-body">
+                            {{ project.description }}
+                        </div>
+                    </div>
                     <section>
-                        <h4><strong>Project Description:</strong></h4>
-                        <span class="description">{{ project.description }}</span>
-                    </section><br><br>
-                    <section>
-                    <h4><strong>Project Members:</strong></h4>
-                    <span class="members">
-                        {% if project.team_members.name %}
-                            <h5>{{ project.team_members.name }}</h5>
-                        {% else %}
-                            <h5>No members yet</h5>
-                        {% endif %}
-                    </span>
+                        <div class="card">
+                            <div class="card-header">
+                                <h4><strong>Project Members</strong></h4>
+                            </div>
+                            {% for member in project_members %}
+                                <div class="col-md-3">
+                                    <div class="card-body" style="width:120px;">
+                                        {% if member.profile %}
+                                            <img src="{{ member.profile.url }}" class="card-img rounded-circle"
+                                                 alt="No image">
+                                        {% else %}
+                                            <p>No image</p>
+                                        {% endif %}
+                                        <div class="card-footer" style="width:100px;">
+                                            <h6 class="card-text">{{ member.first_name }}</h6>
+                                        </div>
+                                    </div>
+                                    {% empty %}
+                                    <h5>No members yet</h5>
+                                </div>
+                            {% endfor %}
+                        </div>
                     </section>
-
                 </main>
-                <footer class="text-center">
-                    <h1>
-                        ar merge o sectiune de comentarii </h1>
-                </footer>
             </div>
         </div>
     </div>

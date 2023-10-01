@@ -40,13 +40,14 @@
                                         <ul class="dropdown-menu">
                                             <li><a href="{% url 'update-project' project.id %}"
                                                    class="dropdown-item">Update Project</a></li>
-                                            <li><a href="{% url 'delete-project' project.id %}"
-                                                   class="dropdown-item">Delete Project</a></li>
-                                            <li><a href="#" class="dropdown-item">See project members</a></li>
-                                            <li><a href="{% url 'add-members-project' project_id=project.id %}"
-                                                   class="dropdown-item">
-                                                Add members </a></li>
+                                            <li><a href="#" class="dropdown-item deleteprojectlink" id="deleteproject"
+                                                   data-toggle="modal" data-target="#deleteprojectModal{{ project.id }}">
+                                                Delete Project</a></li>
+                                            <li>
+                                                <a href="{% url 'add-members-project' project_id=project.id %}" class="dropdown-item">
+                                                    Add members </a></li>
                                         </ul>
+                                        {% include 'projects/delete_project.html' %}
                                     </div>
                                 </td>
                             </tr>
@@ -72,7 +73,8 @@
                                 <td>{{ project.status }}</td>
                                 <td>{{ project.end_date|date:'d-m-Y' }}</td>
                                 <td>
-                                    <a href="{% url 'detail-project' project.id %}" class=" btn btn-danger">View Details </a>
+                                    <a href="{% url 'detail-project' project.id %}" class=" btn btn-danger">View
+                                        Details </a>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -87,5 +89,8 @@
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src=" https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="{% static 'js/modal.js' %}"></script>
     <script src="{% static 'js/table.js' %}"></script>
+
+
 {% endblock %}

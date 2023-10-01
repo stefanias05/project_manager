@@ -344,6 +344,13 @@ team
 
 }
 /*-----------------
-Details
+team members-detail project
  */
 
+.card-img{
+  width: 100px;
+  height: 100px;
+  border-radius: 70%;
+  align-content: center;
+  object-fit: cover; /*ma asigur ca img se taie corespunzator*/
+}

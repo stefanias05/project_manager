@@ -56,13 +56,12 @@ class CreateProjectView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return super(CreateProjectView, self).form_valid(form)
 
 
-# class ProjectDetailView(LoginRequiredMixin, DetailView):
-#     model = Project
-#     template_name = 'projects/detail_project.html'
+
 @login_required
 def detail_project(request, project_id):
     project = Project.objects.get(pk=project_id)
-    return render(request, 'projects/detail_project.html', {'project': project})
+    project_members = project.team_members.all()
+    return render(request, 'projects/detail_project.html', {'project': project, 'project_members': project_members})
 
 
 class UpdateProjectView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
@@ -103,7 +102,7 @@ def allocate_member_project(request, project_id):
         team_members = MemberUser.objects.exclude(
             user_ptr_id__in=project.team_members.values_list("id", flat=False))
 
-        return render(request, 'projects/add_member.html', {'team_members': team_members})
+        return render(request, 'projects/add_member.html', {'team_members': team_members, "project": project.name})
 
 
 @login_required()
@@ -116,4 +115,5 @@ def user_project(request):
     user = request.user  # stochez userul autentificat in var
     allprojects = Project.objects.filter(owner=user)
     project_member = Project.objects.filter(team_members=user)
-    return render(request, 'projects/user_projects.html', {'allprojects': allprojects,'projectsmember': project_member})
+    return render(request, 'projects/user_projects.html',
+                  {'allprojects': allprojects, 'projectsmember': project_member})

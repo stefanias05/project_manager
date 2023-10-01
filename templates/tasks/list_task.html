@@ -39,12 +39,15 @@
                                         <ul class="dropdown-menu" id="elements-list">
                                             <li><a href="{% url 'update_task' task_id=task.id %}" class="dropdown-item">Update
                                                 your task </a></li>
-                                            <li><a href="{% url 'delete-task' task.id %}" class="dropdown-item">Delete
-                                                Task</a></li>
-                                            <li><a href="{{ task.id }}" class="dropdown-item"
-                                                   id="detailTask" data-toggle="modal" data-target="#detailModal">
+                                            <li><a href="#" class="dropdown-item deletetasklink" id="deleteTask"
+                                                   data-toggle="modal" data-target ="#deleteModal{{ task.id }}">
+                                                Delete Task</a></li>
+                                            <li><a href="#" class="dropdown-item detailtasklink"
+                                                   id="detailTask" data-toggle="modal" data-target="#detailModal{{ task.id }}">
                                                 Detail Task</a></li>
-                                        </ul>{% include 'tasks/detail_task.html' %}
+                                        </ul>
+                                        {% include 'tasks/detail_task.html' %}
+                                        {% include 'tasks/delete-task.html'  %}
                                     </div>
                                 </td>
                             </tr>

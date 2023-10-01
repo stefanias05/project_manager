@@ -1,30 +1,52 @@
-{% extends 'base.html' %}
-{% block title %} Delete {{ project }} {% endblock %}
-
+{#{% extends 'base.html' %}#}
+{#{% block title %} Delete {{ project }} {% endblock %}#}
+{#{% block content %}#}
+    {#    <div class="container-fluid">#}
+    {#        <div class="row">#}
+    {#            <div class="col-md-6 offset-md-3">#}
+    {#                <br>#}
+    {#                <br>#}
+    {#                <br>#}
+    {##}
+    {#                <div class="card">#}
+    {#                    <div class="card-header">#}
+    {#                        <h3 class="text-center">Delete {{ project }} project</h3>#}
+    {#                    </div>#}
+    {#                    <form method="post">#}
+    {#                        {% csrf_token %}#}
+    {#                        <div class="card-body">#}
+    {#                            <p>Are you sure you want to delete {{ project }}?</p>#}
+    {#                        </div>#}
+    {#                        <div class="card-footer text-center">#}
+    {#                            <button type="submit" class="btn btn-success">Yes</button>#}
+    {#                            <a href="{% url 'list-of-projects' %}" class="btn btn-outline-secondary">No</a>#}
+    {#                        </div>#}
+    {#                    </form>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+{#{% endblock %}#}
 {% block content %}
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <br>
-                <br>
-                <br>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="text-center">Delete {{ project }} project</h3>
-                    </div>
-                    <form method="post">
-                        {% csrf_token %}
-                        <div class="card-body">
-                            <p>Are you sure you want to delete {{ project }}?</p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <button type="submit" class="btn btn-success">Yes</button>
-                            <a href="{% url 'list-of-projects' %}" class="btn btn-outline-secondary">No</a>
-                        </div>
-                    </form>
+    <div class="modal fade" tabindex="-1" role="dialog" id="deleteprojectModal{{ project.id }}" aria-hidden="true"
+         aria-labelledby="detailModalLabel">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+             role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title" style="color: #d9232d"><strong> Delete {{ project }}</strong></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <form method="post" enctype="multipart/form-data" action="{% url 'delete-project' project.id %}">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete {{ project }}?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger">Yes</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

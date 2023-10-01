@@ -1,17 +1,28 @@
 {% extends 'base.html' %}
+{% block title %} Members {% endblock %}
 {% block content %}
-
-    <form method="post">
-        {% csrf_token %}
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        {% for user in team_members %}
-            <input type="checkbox" id="{{ user.id }}" name="team_members" value="{{ user.id }}">{{ user.first_name }}
-        {% endfor %}
-        <button type="submit">Add</button>
-    </form>
+    <br><br><br><br><br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Add Members for {{ project }}</h2>
+                    </div>
+                <br>
+                    <form method="post" enctype="multipart/form-data" class="text-center">
+                        {% csrf_token %}
+                        {% for user in team_members %}
+                            <input type="checkbox" id="{{ user.id }}" name="team_members" value="{{ user.id }}">
+                            <strong>{{ user.first_name }} {{ user.last_name }} - {{ user.position }} </strong><br><br>
+                        {% endfor %}
+                     <div class="card-footer text-center">
+                        <button type="submit" class="btn btn-danger">Add</button>
+                         <a href="{% url 'my-projects' %}" class="btn btn-outline-secondary">Cancel</a>
+                     </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
