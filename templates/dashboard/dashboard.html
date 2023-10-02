@@ -1,0 +1,47 @@
+{% include 'base.html' %}
+{% load static %}
+{% block content %}
+    <br><br><br><br><br><br><br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="col-md">
+                    <div class="card text-center" id="my-projects">
+                        <div class="card-header"><h6 class="card-title">My Projects</h6></div>
+                        <div class="card-body">
+                            <ul>
+{#                                {% for project in ownerprojects %}#}
+{#                                    <li>{{ project.name }}</li>#}
+{#                                {% endfor %}#}
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="col-md">
+                    <div class="card text-center" id="my-tasks">
+                        <div class="card-header"><h6 class="card-title">My Tasks</h6></div>
+                        <div class="card-body">
+                        </div>
+                        <div class="card-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="col-md">
+                    <div class="card text-center" id="my-coworkers">
+                        <div class="card-header"><h6 class="card-title">My Co-workers</h6></div>
+                        <div class="card-body">
+                        </div>
+                        <div class="card-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

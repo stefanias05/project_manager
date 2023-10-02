@@ -7,6 +7,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import loader
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 
@@ -117,3 +118,4 @@ def user_project(request):
     project_member = Project.objects.filter(team_members=user)
     return render(request, 'projects/user_projects.html',
                   {'allprojects': allprojects, 'projectsmember': project_member})
+

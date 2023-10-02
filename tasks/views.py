@@ -48,20 +48,22 @@ def create_task(request):
             return redirect('add-task')
         else:
             form = TaskForm(request.user)
-    return render(request, 'tasks/create_tasks.html', {'form':form})
+    return render(request, 'tasks/create_tasks.html', {'form': form})
 
 
 @login_required
 def user_task(request):
     user = request.user
     alltasks = Task.objects.filter(user=user)
-    return render(request, 'tasks/list_task.html', {'alltasks': alltasks})
+    return render(request, 'tasks/list_task.html',
+                  {'alltasks': alltasks})
 
 
 class DeleteViewTask(LoginRequiredMixin, DeleteView):
     model = Task
     template_name = 'tasks/delete-task.html'
     success_url = reverse_lazy('list-of-taks')
+
 
 @login_required
 def update_task(request, task_id):
@@ -75,10 +77,10 @@ def update_task(request, task_id):
     else:
         form = TaskUpdateForm(user)
 
-    return render(request, 'tasks/update-task.html',{'form': form})
+    return render(request, 'tasks/update-task.html', {'form': form})
 
 
-class DetailTask(LoginRequiredMixin,DetailView):
+class DetailTask(LoginRequiredMixin, DetailView):
     model = Task
     template_name = 'tasks/detail_task.html'
     success_url = reverse_lazy('list-of-taks')
