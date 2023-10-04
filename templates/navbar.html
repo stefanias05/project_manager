@@ -20,9 +20,11 @@
             <li><a href="{% url 'team-members' %}">Team</a></li>
             <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
             <li>
-                <a href="#">Notifications <span class="badge text-bg-secondary"></span></a>
+                <a href="#"><i class="fa-regular fa-bell fa-xl" style="color: #910808;"></i><span class="badge text-bg-secondary"></span></a>
             </li>
-            <li><a href="{% url 'logout' %}" class="getstarted">Logout, {{ user.first_name }} </a></li>
+            <li>
+                <a href="{% url 'logout' %}" class="getstarted">Logout, {{ user.first_name }} </a>
+            </li>
         {% else %}
             <li><a href="{% url 'login' %}" class="getstarted">Log In </a></li>
             <li><a href="{% url 'create-member' %}" class="getstarted">Get Started</a></li>

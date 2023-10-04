@@ -20,6 +20,7 @@
                         <th>Timeline</th>
                         <th>Project</th>
                         <th>Action</th>
+                        <th> </th>
                         </thead>
                         <tbody>
                         {% for task in alltasks %}
@@ -50,6 +51,7 @@
                                         {% include 'tasks/delete-task.html'  %}
                                     </div>
                                 </td>
+                                <td><a href="{% url 'mark-done' task_id=task.id %}" class="btn btn-danger">Mark as done</a></td>
                             </tr>
                         {% endfor %}
                         </tbody>

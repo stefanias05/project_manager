@@ -64,6 +64,12 @@ class DeleteViewTask(LoginRequiredMixin, DeleteView):
     template_name = 'tasks/delete-task.html'
     success_url = reverse_lazy('list-of-taks')
 
+@login_required
+def mark_as_done(request,task_id):
+    task = Task.objects.get(pk=task_id)
+    task.status = 'Done'
+    task.save()
+    return redirect('list-of-taks')
 
 @login_required
 def update_task(request, task_id):

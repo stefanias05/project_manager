@@ -119,3 +119,4 @@ def user_project(request):
     return render(request, 'projects/user_projects.html',
                   {'allprojects': allprojects, 'projectsmember': project_member})
 
+

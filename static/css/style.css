@@ -314,6 +314,9 @@ Form header and labels
  background-color: #e84343;
     color: #fff;
 }
+ div .card-body a{
+   text-decoration: none;
+ }
 label {
   font-weight: bold;
 }

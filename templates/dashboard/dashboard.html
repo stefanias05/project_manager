@@ -1,21 +1,69 @@
 {% include 'base.html' %}
 {% load static %}
 {% block content %}
-    <br><br><br><br><br><br><br>
+    <br xmlns="http://www.w3.org/1999/html"><br><br><br><br><br><br>
     <div class="container-fluid">
+        <div class="content">
+            <div class="pb-5">
+                <div class="g-4 row">
+                    <div class="col-xxl-6 col-12">
+                        <div class="mb-8">
+                            <h2 class="mb-2" style="color: #d9232d"><strong>Dashboard</strong></h2>
+                            <h5 style="color: #556270">Here’s what’s going on your profile right now</h5>
+                        </div>
+                        <br>
+                        <div class="align-items-center g-4 border-bottom pb-4 mb-6 row">
+                            <div class="col-md-auto col-12">
+                                <div class="align-items-center hstack">
+                                    <span class="fa-solid fa-file-lines"></span>
+                                    <div class="ms-3">
+                                        <h4 class="mb-0" style="color: #d9232d"><strong>{{ number_project }} projects</strong></h4>
+                                        <p class="text-800 fs-9 mb-0"style="color: #556270">In progress</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-auto col-12">
+                                <div class="align-items-center hstack">
+                                    <span class="fa-solid fa-list-check"></span>
+                                    <div class="ms-3">
+                                        <h4 class="mb-0" style="color:#d9232d"><strong>{{ number_task }} Tasks</strong></h4>
+                                        <p class="text-800 fs-9 mb-0"style="color: #556270">In progress</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-auto col-12">
+                                <div class="align-items-center hstack">
+                                    <span class="fa-solid fa-users"></span>
+                                    <div class="ms-3">
+                                        <h4 class="mb-0" style="color: #d9232d"><strong>{{ members }} Members</strong></h4>
+                                        <p class="text-800 fs-9 mb-0" style="color: #556270">All users</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col">
                 <div class="col-md">
                     <div class="card text-center" id="my-projects">
-                        <div class="card-header"><h6 class="card-title">My Projects</h6></div>
+                        <div class="card-header"><h6 class="card-title"><strong>My Projects</strong></h6></div>
                         <div class="card-body">
-                            <ul>
-{#                                {% for project in ownerprojects %}#}
-{#                                    <li>{{ project.name }}</li>#}
-{#                                {% endfor %}#}
-                            </ul>
+                            {% if ownerprojects %}
+                                {% for project in ownerprojects %}
+                                    {{ project.name }}<br>
+                                    {#                                    {% if member_projects %}#}
+                                    {% for projects in member_projects %}
+                                        {{ projects.name }}<br>
+                                    {% endfor %}
+                                {% endfor %}
+                            {% else %}
+                                <p>No projects available</p>
+                            {% endif %}
                         </div>
-                        <div class="card-footer">
+                        <div class="card-footer" style="background-color: #e84343">
                         </div>
                     </div>
                 </div>
@@ -23,10 +71,13 @@
             <div class="col">
                 <div class="col-md">
                     <div class="card text-center" id="my-tasks">
-                        <div class="card-header"><h6 class="card-title">My Tasks</h6></div>
+                        <div class="card-header"><h6 class="card-title"><strong>My Tasks</strong></h6></div>
                         <div class="card-body">
+                            {% for task in alltasks %}
+                                {{ task.title }} for {{ task.project }}<br>
+                            {% endfor %}
                         </div>
-                        <div class="card-footer">
+                        <div class="card-footer" style="background-color: #e84343">
                         </div>
                     </div>
                 </div>
@@ -34,10 +85,19 @@
             <div class="col">
                 <div class="col-md">
                     <div class="card text-center" id="my-coworkers">
-                        <div class="card-header"><h6 class="card-title">My Co-workers</h6></div>
+                        <div class="card-header"><h6 class="card-title"><strong>My teamwork</strong></h6></div>
                         <div class="card-body">
+                            {% for team in ownerprojectteam %}
+                                {% if team.profile %}
+                                    <p><img src="{{ team.profile.url }}"
+                                            alt="No image"
+                                            style="width:30px">
+                                        <strong>{{ team.first_name }} {{ team.last_name }}</strong>
+                                    </p>
+                                {% endif %}
+                            {% endfor %}
                         </div>
-                        <div class="card-footer">
+                        <div class="card-footer" style="background-color: #e84343">
                         </div>
                     </div>
                 </div>
