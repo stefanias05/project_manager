@@ -2,54 +2,82 @@
 {% load static %}
 {% block title %} {{ project }} {% endblock %}
 {% block content %}
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="container-fluid">
+    <div class="container"><br><br><br><br><br>
         <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <header style="color: #d9232d; text-align: center">
-                    <h1><strong>{{ project.name }}</strong></h1>
-                    <h5><strong style="color: #556270">{{ project.status }}<br>{{ project.end_date }}</strong></h5>
-                </header>
-                <br>
-                <main>
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Project Description</h4>
-                        </div>
-                        <div class="card-body">
-                            {{ project.description }}
+            <div class="col md-6 offset md-3">
+                <div class="col-xxl-4 col-xl-3 col-lg-4 col-sm-5 col-12">
+                    <h2 class="text-black fw-bolder mb-2">
+                        {{ project.name }}
+                    </h2>
+                    <span class="badge-phoenix badge-phoenix-primary badge" style="background-color: darkred">
+                            <span class="badge-label">{{ project.status }}</span>
+                            </span>
+                    <div class="gx-0 gx-sm-5 gy-8 mb-8 row">
+                        <div class="pe-xl-0 col-xxl-4 col-xl-3 col-12">
+                            <div class="mb-4 mb-xl-7">
+                                <table class="lh-sm mb-3 mb-sm-0 mb-xl-3">
+                                    <tbody>
+                                    <tr>
+                                        <td colspan="2" class="py-1"><i class="fa-solid fa-earth-americas"
+                                                                        style="color: #d95e5e;"></i>
+                                            Public Project
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="align-top py-1"><i class="fa-regular fa-user"
+                                                                      style="color: #ea5353;"></i>
+                                            Owner: {{ project.owner.first_name }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="1h-sm">
+                                    <tbody>
+                                    <tr>
+                                        <td class="align-top py-1 text-900 text-nowrap fw-bold">Start
+                                            Date: {{ project.start_date }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="align-top py-1 text-900 text-nowrap fw-bold">
+                                            Deadline: {{ project.end_date }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                    <section>
-                        <div class="card">
-                            <div class="card-header">
-                                <h4><strong>Team Work</strong></h4>
-                            </div>
-                            {% for member in project_members %}
-                                <div class="col-md-3">
-                                    <div class="card-body" style="width:120px;">
-                                        {% if member.profile %}
-                                            <img src="{{ member.profile.url }}" class="card-img rounded-circle"
-                                                 alt="No image">
-                                        {% else %}
-                                            <p>No image</p>
-                                        {% endif %}
-                                        <div class="card-footer" style="width:100px;">
-                                            <h6 class="card-text">{{ member.first_name }}</h6>
-                                        </div>
-                                    </div>
-                                    {% empty %}
-                                    <h5>No members yet</h5>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </section>
-                </main>
+                    <div class="d-flex align-items-center">
+                        <h5 class="text-1100 mb-0 me-2">
+                            <i class="fa-solid fa-list-check"
+                               style="color: #d35050;"></i> {{ project.task_set.count }} Tasks
+                        </h5>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-8 col-sm-7 col-12">
+                <i class="fa-solid fa-user-group"
+                   style="color: #e15151;"></i>
+                <h4 class="text-1100 mb-4">Team Members:</h4>
+                <div class="d-flex mb-8 gap-1">
+                    {% for member in project_members %}
+                        {% if member.profile %}
+                            <img src="{{ member.profile.url }}" class="rounded-circle"
+                                 style="width: 50px; height: 50px;"
+                                 alt="No image">
+                        {% else %}
+                            <p>No image</p>
+                        {% endif %}
+                        {% empty %}
+                        <p> No members yet</p>
+
+                    {% endfor %}
+                </div>
+            </div>
+            <div>
+                <h3 class="text-1100 mb-4">Project Description</h3>
+                <p class="text-800 mb-4">{{ project.description }}</p>
             </div>
         </div>
     </div>
-
+    </div>
 {% endblock %}
