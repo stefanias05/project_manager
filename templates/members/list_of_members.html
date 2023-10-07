@@ -27,7 +27,7 @@
                             <p class="card-text">{{ member.position }}</p><br>
                             <p class="card-text"><b>Email:</b> {{ member.email }}</p>
                             <a href="{% url 'completed-projects' member_id=member.id %}"
-                               class="btn btn-danger">See {{ member.first_name }}'s completed projects</a>
+                               class="btn btn-danger">More About {{ member.first_name }}</a>
                         </div>
                     </div>
                 </div>

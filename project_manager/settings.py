@@ -71,7 +71,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'project_manager.context_processors.get_user_project',
-                'project_manager.context_processors.get_user_tasks'
+                'project_manager.context_processors.get_user_tasks',
 
             ],
         },

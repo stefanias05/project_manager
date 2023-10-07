@@ -8,7 +8,7 @@
                 <div class="g-4 row">
                     <div class="col-xxl-6 col-12">
                         <div class="mb-8">
-                            <h2 class="mb-2" style="color: #d9232d"><strong>Dashboard</strong></h2>
+                            <h2 class="mb-2" style="color: #d9232d"><strong><i class="fa-regular fa-hand" style="color: #d61f31;"></i> Hi, {{ user.first_name }}</strong></h2>
                             <h5 style="color: #556270">Here’s what’s going on your profile right now</h5>
                         </div>
                         <br>
@@ -63,7 +63,7 @@
                                 <p>No projects available</p>
                             {% endif %}
                         </div>
-                        <div class="card-footer" style="background-color: #e84343">
+                        <div class="card-footer">
                         </div>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                                 {{ task.title }} for {{ task.project }}<br>
                             {% endfor %}
                         </div>
-                        <div class="card-footer" style="background-color: #e84343">
+                        <div class="card-footer">
                         </div>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                                 {% endif %}
                             {% endfor %}
                         </div>
-                        <div class="card-footer" style="background-color: #e84343">
+                        <div class="card-footer"">
                         </div>
                     </div>
                 </div>

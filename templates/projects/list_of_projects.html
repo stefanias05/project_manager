@@ -2,62 +2,128 @@
 {% load static %}
 {% block title %} Projects {% endblock %}
 
+{#{% block content %}#}
+{#    <br>#}
+{#    <br>#}
+{#    <br>#}
+{#    <br>#}
+{#    <br>#}
+{#    <br>#}
+{#    <div class="container-fluid">#}
+{#        <div class="row">#}
+{#            <div class="col-md-6 offset-md-3">#}
+{#                {% if allprojects %}#}
+{##}
+{#                    <table class="table" id="projecttable">#}
+{#                        <thead>#}
+{#                        <th> Name</th>#}
+{#                        <th>Description</th>#}
+{#                        <th> Start Date</th>#}
+{#                        <th> Status</th>#}
+{#                        <th> Priority</th>#}
+{#                        <th> Timeline</th>#}
+{#                        <th>Owner</th>#}
+{#                        <th> Action </th>#}
+{#                        </thead>#}
+{#                        <tbody>#}
+{#                        {% for project in allprojects %}#}
+{#                            <tr>#}
+{#                                <td> {{ project.name }}</td>#}
+{#                                <td>{{ project.description }}</td>#}
+{#                                <td>{{ project.start_date|date:'d-m-Y' }}</td>#}
+{#                                <td>{{ project.status }}</td>#}
+{#                                <td>{{ project.priority }}</td>#}
+{#                                <td>{{ project.end_date|date:'d-m-Y' }}</td>#}
+{#                                <td>{% if user.profile %}#}
+{#                                    <img src="{{ user.profile.url }}" alt="Icon">#}
+{#                                    {% else%}#}
+{#                                    {{ project.owner.first_name }}#}
+{#                                    {% endif %}#}
+{#                                </td>#}
+{#                                <td>#}
+{#                                    <a href="{% url 'detail-project' project.id %}" class=" btn btn-danger">#}
+{#                                        View Details </a>#}
+{#                                </td>#}
+{#                            </tr>#}
+{#                        {% endfor %}#}
+{#                        </tbody>#}
+{#                    </table>#}
+{#                {% else %}#}
+{#                    <H1>No projects yet</H1>#}
+{#                {% endif %}#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>#}
+{#    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>#}
+{#    <script src=" https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>#}
+{#    <script src="{% static 'js/table.js' %}"></script>#}
+{##}
+{##}
+{#{% endblock %}#}
 {% block content %}
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <div class="container-fluid">
+        <br><br>
         <div class="row">
-            <div class="col-md-6 offset-md-3">
-                {% if allprojects %}
-
-                    <table class="table" id="projecttable">
-                        <thead>
-                        <th> Name</th>
-                        <th>Description</th>
-                        <th> Start Date</th>
-                        <th> Status</th>
-                        <th> Priority</th>
-                        <th> Timeline</th>
-                        <th>Owner</th>
-                        <th> Action </th>
-                        </thead>
-                        <tbody>
-                        {% for project in allprojects %}
-                            <tr>
-                                <td> {{ project.name }}</td>
-                                <td>{{ project.description }}</td>
-                                <td>{{ project.start_date|date:'d-m-Y' }}</td>
-                                <td>{{ project.status }}</td>
-                                <td>{{ project.priority }}</td>
-                                <td>{{ project.end_date|date:'d-m-Y' }}</td>
-                                <td>{% if user.profile %}
-                                    <img src="{{ user.profile.url }}" alt="Icon">
-                                    {% else%}
-                                    {{ project.owner.first_name }}
-                                    {% endif %}
-                                </td>
-                                <td>
-                                    <a href="{% url 'detail-project' project.id %}" class=" btn btn-danger">
-                                        View Details </a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                {% else %}
-                    <H1>No projects yet</H1>
-                {% endif %}
+            {#
+            <div class="d-flex flex-wrap mb-4 gap-3 gap-sm-6 align-items-center">
+                <div class="d-flex flex-wrap flex-stack my-5">
+                    <strong>
+                        <h2 class="mb-0"><span class="me-3">Projects</span>
+                            <span class="fw-normal text-700"> ({{ allprojects.count }})</span>
+                        </h2>
+                    </strong>
+                </div><br>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-danger" type="submit">Search</button>
+                </form>
             </div>
         </div>
+
+        <div class="row g-6 g-xl-9">
+            {% for project in allprojects %}
+                <div class="col-md-6 col-xl-4">
+                    <a href="{% url 'detail-project' project.id %}" class="card border-hover-primary"
+                       style="text-decoration: none">
+                        <div class="card-header border-0 pt-9">
+                            {#                                    card title#}
+                            <div class="card-title m-0">
+                            </div>
+                            <div class="card-toolbar">
+                                        <span class="badge badge-light-primary fw-bold me-auto px-4 py-2">
+                                            {{ project.status }}
+                                        </span>
+                            </div>
+                        </div>
+                        <div class="card-body p-9">
+                            <div class="fs-3 fw-bold text-dark"><b>{{ project.name }}</b></div>
+                            <p class="text-gray-400 fw-semibold fs-5 mt-1 mb-7" style="color: gray">
+                                Priority: {{ project.priority }}</p>
+                            <div class="d-flex flex-wrap mb-5">
+                                <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-7 mb-3">
+                                    <div class="fs-6 text-gray-800 fw-bold">
+                                        {{ project.start_date }}
+                                    </div>
+                                    <div class="fw-semibold text-gray-400">Start Date</div>
+                                </div>
+                                <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-7 mb-3">
+                                    <div class="fs-6 text-gray-800 fw-bold">
+                                        {{ project.end_date }}
+                                    </div>
+                                    <div class="fw-semibold text-gray-400">End Date</div>
+                                </div>
+                            </div>
+                            <hr>
+                            <p style="color: gray"><strong>Number of members: {{ project.team_members.count }}</strong>
+                            </p>
+                            <p style="color: gray"><strong>Owner: {{ project.owner.first_name }}</strong></p>
+                        </div>
+                    </a><br>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src=" https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-    <script src="{% static 'js/table.js' %}"></script>
-
-
+    </div>
+    </div>
 {% endblock %}

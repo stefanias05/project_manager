@@ -17,6 +17,7 @@ def index(request):
 
 @login_required
 def dashboard(request):
+    user = request.user
     projects = get_user_project(request)
     tasks = get_user_tasks(request)
     users = allusers(request)
@@ -27,7 +28,7 @@ def dashboard(request):
                    'ownerprojectteam': projects['team'],
                    'number_project': projects['number_projects'],
                    'number_task': tasks['number_task'],
-                   'members': users['allmembers']
+                   'members': users['allmembers'],'user': user
                    })
 
 
