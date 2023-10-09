@@ -63,6 +63,21 @@ class MemberRegisterForm(UserCreationForm):
 
 
 
+class MemberUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = MemberUser
+        fields = ['username',
+                  'email',
+                  'position',
+                  'profile'
+                  ]
+        widgets ={
+            'email': EmailInput(attrs={'class': 'form-control', 'placeholder': 'Update your email address '}),
+            'position': TextInput(attrs={'class': 'form-control', 'placeholder': 'Update your position'}),
+            'username': TextInput(attrs={'class': 'form-control', 'placeholder': ' Change your username'}),
+
+        }
 
 
 

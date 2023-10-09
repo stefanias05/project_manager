@@ -1,4 +1,4 @@
-
+{% load static%}
 <nav id="navbar" class="navbar">
     <ul>
         {% if not user.is_authenticated %}
@@ -30,17 +30,16 @@
                     <a class="d-flex align-items-center show" href="#" role="button"
                        data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
                         <div>
-{#                            <div class="avatar avatar-l">#}
-{#                                    <img src="{{ member.profile.url }}" alt="img" class="rounded-circle">#}
-{#                            </div>#}
-
+                            <div class="avatar">
+                                <img src="{{user.memberuser.profile.url}}" alt="img" class="rounded-circle" style="width: 30px; height: 30px;">
+                            </div>
                         </div>
                             <div class="d-none d-sm-block ms-3">
                                 <span class="h6">{{ user.first_name }}</span>
                             </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-endshow" data-bs-popper="static">
-                        <a class="dropdown-item" href="#"> Edit Profile</a>
+                        <a class="dropdown-item" href="{% url 'edit-profile' %}"> Edit Profile</a>
                         <a class="dropdown-item" href="{% url 'logout' %}"> Log Out</a>
                     </div>
                 </div>

@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.contrib.messages.views import SuccessMessageMixin
@@ -6,7 +8,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView
 
-from members.forms import MemberRegisterForm
+from members.forms import MemberRegisterForm, MemberUpdateForm
 from members.models import MemberUser
 from projects.models import Project
 
@@ -23,7 +25,7 @@ class MemberAccountForm(SuccessMessageMixin,CreateView):
         return msg
 
 
-class MembersListView(ListView):
+class MembersListView(LoginRequiredMixin,ListView):
     model = MemberUser
     template_name = 'members/list_of_members.html'
     context_object_name = 'allmembers'
@@ -39,6 +41,20 @@ def completed_member_project(request, member_id):
     completed_projects = Project.objects.filter(owner_id=member, status='Completed')
     return render(request,'members/member_project_list_completed.html', {'completed_projects':completed_projects, 'member': member})
 
+@login_required
+def update_profile_user(request):
+    user = request.user
+    user_profile = MemberUser.objects.get(user_ptr_id = user.id)
+    form = MemberUpdateForm(request.POST, instance=user)
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            return redirect("dashboard")
+        else:
+            form = MemberUpdateForm(instance=request.user)
 
+    return render(request,'members/update_profile.html', {'form': form,
+                                                          'user': user_profile
+                                                          })
 
 

@@ -73,6 +73,7 @@ TEMPLATES = [
                 'project_manager.context_processors.get_user_project',
                 'project_manager.context_processors.get_user_tasks',
 
+
             ],
         },
     },
