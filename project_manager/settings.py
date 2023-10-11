@@ -13,7 +13,6 @@ import os
 from pathlib import Path
 
 
-
 # Build paths inside the projects like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -72,8 +71,6 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'project_manager.context_processors.get_user_project',
                 'project_manager.context_processors.get_user_tasks',
-
-
             ],
         },
     },

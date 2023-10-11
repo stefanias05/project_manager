@@ -25,7 +25,7 @@ def dashboard(request):
                   {'ownerprojects': projects["allprojects"],
                    'member_projects':projects['project_member'],
                    'alltasks': tasks['alltasks'],
-                   'ownerprojectteam': projects['team'],
+                   'projectteam': projects['team'],
                    'number_project': projects['number_projects'],
                    'number_task': tasks['number_task'],
                    'members': users['allmembers'],'user': user

@@ -19,7 +19,7 @@
                                     <span class="fa-solid fa-file-lines"></span>
                                     <div class="ms-3">
                                         <h4 class="mb-0" style="color: #d9232d"><strong>{{ number_project }} projects</strong></h4>
-                                        <p class="text-800 fs-9 mb-0"style="color: #556270">In progress</p>
+                                        <p class="text-800 fs-9 mb-0"style="color: #556270">All Projects</p>
                                     </div>
                                 </div>
                             </div>
@@ -28,7 +28,7 @@
                                     <span class="fa-solid fa-list-check"></span>
                                     <div class="ms-3">
                                         <h4 class="mb-0" style="color:#d9232d"><strong>{{ number_task }} Tasks</strong></h4>
-                                        <p class="text-800 fs-9 mb-0"style="color: #556270">In progress</p>
+                                        <p class="text-800 fs-9 mb-0"style="color: #556270">All Tasks</p>
                                     </div>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@
                         <div class="card-header"><h6 class="card-title"><strong>My Tasks</strong></h6></div>
                         <div class="card-body">
                             {% for task in alltasks %}
-                                {{ task.title }} for {{ task.project }}<br>
+                                {{ task.title }}<br>
                             {% endfor %}
                         </div>
                         <div class="card-footer">
@@ -88,14 +88,8 @@
                     <div class="card text-center" id="my-coworkers">
                         <div class="card-header"><h6 class="card-title"><strong>My teamwork</strong></h6></div>
                         <div class="card-body">
-                            {% for team in ownerprojectteam %}
-                                {% if team.profile %}
-                                    <p><img src="{{ team.profile.url }}"
-                                            alt="No image"
-                                            style="width:30px">
-                                        <strong>{{ team.first_name }} {{ team.last_name }}</strong>
-                                    </p>
-                                {% endif %}
+                            {% for team in projectteam %}
+                                <strong>{{ team.first_name }} {{ team.last_name }}</strong>
                             {% endfor %}
                         </div>
                         <div class="card-footer">
