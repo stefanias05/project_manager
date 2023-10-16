@@ -19,18 +19,31 @@ from django.contrib import admin
 from django.contrib.auth import views
 from django.urls import path, include
 from django.conf.urls.static import static
-
-
+from django.contrib.auth import views as auth_views
 from members.forms import NewAuthenticationForm
 from project_manager import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('home.urls')),
-    path('', include('projects.urls')),
-    path('login/', views.LoginView.as_view(form_class=NewAuthenticationForm), name='login'),
-    path('', include('django.contrib.auth.urls')),
-    path('', include('members.urls')),
-    path('', include('tasks.urls'))
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+                  path('admin/', admin.site.urls),
+                  path('', include('home.urls')),
+                  path('', include('projects.urls')),
+                  path('login/', views.LoginView.as_view(form_class=NewAuthenticationForm), name='login'),
+                  path("password_reset/",
+                       auth_views.PasswordResetView.as_view(template_name='registration/reset_password_form.html'),
+                       name="password_reset"),
+                  path(
+                      "password_reset/done/",
+                      auth_views.PasswordResetDoneView.as_view(template_name='registration/password_reset_sent.html'),
+                      name="password_reset_done",
+                  ),
+                  path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_set_form.html'),
+                       name=" password_reset_confirm"),
+                  path(
+                      "reset/done/",
+                      views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_confirmation.html'),
+                      name="password_reset_complete",
+                  ),
+                  path('', include('django.contrib.auth.urls')),
+                  path('', include('members.urls')),
+                  path('', include('tasks.urls'))
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

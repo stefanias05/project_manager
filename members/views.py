@@ -1,5 +1,6 @@
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import PasswordResetDoneView
 
 # Create your views here.
 from django.contrib.messages.views import SuccessMessageMixin
@@ -77,3 +78,6 @@ class UpdateUserView(UpdateView, LoginRequiredMixin):
     def get_object(self):
         """imi afisez datele curente ale userului in interfata"""
         return self.request.user
+
+# class UserPasswordResetDone(PasswordResetDoneView):
+#     template_name = 'registration/password_reset_sent.html'

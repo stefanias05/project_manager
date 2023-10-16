@@ -48,6 +48,7 @@
         </div>
         <div class="row">
             <div class="col">
+             <a href="{% url 'my-projects' %}" style="text-decoration: none">
                 <div class="col-md">
                     <div class="card text-center" id="my-projects">
                         <div class="card-header"><h6 class="card-title"><strong>My Projects</strong></h6></div>
@@ -68,8 +69,11 @@
                         </div>
                     </div>
                 </div>
+             </a>
             </div>
+
             <div class="col">
+            <a href="{% url 'list-of-taks' %}" style="text-decoration: none">
                 <div class="col-md">
                     <div class="card text-center" id="my-tasks">
                         <div class="card-header"><h6 class="card-title"><strong>My Tasks</strong></h6></div>
@@ -82,8 +86,11 @@
                         </div>
                     </div>
                 </div>
+            </a>
             </div>
+
             <div class="col">
+             <a href="{% url 'team-members' %}" style="text-decoration: none">
                 <div class="col-md">
                     <div class="card text-center" id="my-coworkers">
                         <div class="card-header"><h6 class="card-title"><strong>My teamwork</strong></h6></div>
@@ -96,6 +103,7 @@
                         </div>
                     </div>
                 </div>
+             </a>
             </div>
         </div>
     </div>
