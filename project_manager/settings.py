@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'home',
     'projects',
     'members',
-    'tasks'
+    'tasks',
+    'channels',
+    'notifications'
 ]
 
 MIDDLEWARE = [
@@ -75,6 +77,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'project_manager.wsgi.application'
+ASGI_APPLICATION = 'project_manager.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

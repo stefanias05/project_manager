@@ -9,9 +9,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from django.urls import reverse_lazy
+from django.utils import timezone
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 
 from members.models import MemberUser
+from notifications.models import Notifications
 from projects.forms import ProjectForm, ProjectUpdateForm, ProjectAllocationMembersForm
 from projects.models import Project
 
@@ -83,10 +85,12 @@ class DeleteProjectView(LoginRequiredMixin, DeleteView):
 def allocate_member_project(request, project_id):
     """
     Alocare membrii disponibili pe proiect.
+    Se afiseaza lista cu toti userii aplicatiei disponibili pt alocare pe proiecte.
     :param request:
     :param project_id:
     :return:
     """
+
     project = Project.objects.get(pk=project_id)
     form = ProjectAllocationMembersForm()
     if request.method == 'POST':
@@ -102,6 +106,11 @@ def allocate_member_project(request, project_id):
     else:
         team_members = MemberUser.objects.exclude(
             user_ptr_id__in=project.team_members.values_list("id", flat=False))
+
+        notification = Notifications(receiver=project.owner, message=f"Ai alocat membru pe proiectul {project.name}")
+        notification.save()
+
+        project.check_deadline()
 
         return render(request, 'projects/add_member.html', {'team_members': team_members, "project": project.name})
 
