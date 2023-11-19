@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Notifications {% endblock %}
+{% block content %}
+    <br><br><br><br><br>
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="notif_user_unread">
+                {% for notification in notifications %}
+                <div class="alert alert-success">
+		      <strong class="default"><i class="fa fa-road"></i>{{ notification.message }}</strong>
+		      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
