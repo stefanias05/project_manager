@@ -1,4 +1,4 @@
-{% load static%}
+{% load static %}
 <nav id="navbar" class="navbar">
     <ul>
         {% if not user.is_authenticated %}
@@ -21,9 +21,11 @@
             <li><a href="{% url 'team-members' %}">Team</a></li>
             <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
             <li>
-                <a href="{% url 'notifications' %}"><i class="fa-regular fa-bell fa-xl" style="color: #910808;"></i><span
-                        class="badge text-bg-secondary"></span></a>
-                {#                notifications#}
+                <a href="#" id="allnotifications" data-toggle="modal"
+                   data-target="#notifications" data-url="{% url 'notifications' %}">
+                    <i class="fa-regular fa-bell fa-xl"
+                       style="color: #910808;"></i><span
+                        class="badge text-bg-secondary notificationslink"></span></a>
             </li>
             <li>
                 <div class="dropdown">
@@ -31,12 +33,13 @@
                        data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
                         <div>
                             <div class="avatar">
-                                <img src="{{user.memberuser.profile.url}}" alt="img" class="rounded-circle" style="width: 30px; height: 30px;">
+                                <img src="{{ user.memberuser.profile.url }}" alt="img" class="rounded-circle"
+                                     style="width: 30px; height: 30px;">
                             </div>
                         </div>
-                            <div class="d-none d-sm-block ms-3">
-                                <span class="h6">{{ user.first_name }}</span>
-                            </div>
+                        <div class="d-none d-sm-block ms-3">
+                            <span class="h6">{{ user.first_name }}</span>
+                        </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-endshow" data-bs-popper="static">
                         <a class="dropdown-item" href="{% url 'edit-profile' %}"> Edit Profile</a>
@@ -51,3 +54,5 @@
     </ul>
     <i class="bi bi-list mobile-nav-toggle"></i>
 </nav>
+<script src="{% static 'js/modal.js' %}"></script>
+

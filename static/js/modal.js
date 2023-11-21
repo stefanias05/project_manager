@@ -1,18 +1,18 @@
-
-//Modal de detail task
-var detailTaskLinks = document.querySelectorAll('.detailtasklink'); //imi citesc link-urile de detail task in variabila
-
-//iterez fiecare linie si activez eventul de click pt modal
-detailTaskLinks.forEach(
-    function (link){ link.addEventListener('click',function (e)
-    {e.preventDefault(); //opresc redirectionarea implicita a link-ului
-        var modalId = link.getAttribute('data-target'); //imi citesc id-ul modalului care e acelasi cu data-target din link
-        var modal = document.querySelector(modalId); //imi citesc modalul
-        if(modal) {
-            $(modal).modal("show");
-        }
-    });
-    });
+//
+// //Modal de detail task
+// var detailTaskLinks = document.querySelectorAll('.detailtasklink'); //imi citesc link-urile de detail task in variabila
+//
+// //iterez fiecare linie si activez eventul de click pt modal
+// detailTaskLinks.forEach(
+//     function (link){ link.addEventListener('click',function (e)
+//     {e.preventDefault(); //opresc redirectionarea implicita a link-ului
+//         var modalId = link.getAttribute('data-target'); //imi citesc id-ul modalului care e acelasi cu data-target din link
+//         var modal = document.querySelector(modalId); //imi citesc modalul
+//         if(modal) {
+//             $(modal).modal("show");
+//         }
+//     });
+//     });
 
 
 //Modal delete-task
@@ -51,3 +51,5 @@ deleteProjectLinks.forEach(
         }
         });
     });
+
+//Modal view-notifications
