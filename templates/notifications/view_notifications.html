@@ -16,11 +16,11 @@
                                         aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <ul>
+                            <ul id="list-notifications">
                                     {% for notification in notifications %}
                                         <li>{{ notification.message }}</li>
                                     {% endfor %}
-                                </ul>
+                            </ul>
                             </div>
                         </div>
                     </div>

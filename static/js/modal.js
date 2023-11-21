@@ -53,3 +53,13 @@ deleteProjectLinks.forEach(
     });
 
 //Modal view-notifications
+  document.addEventListener('DOMContentLoaded', function () {
+        var icon = document.getElementById('allnotifications');
+        var modal = document.getElementById('notifications');
+
+        icon.addEventListener('click', function () {
+            modal.style.display = 'block';
+            var url = icon.getAttribute('data-url');
+
+        });
+    });
