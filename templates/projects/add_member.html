@@ -9,17 +9,17 @@
                     <div class="card-header">
                         <h2 class="text-center">Add Members for {{ project }}</h2>
                     </div>
-                <br>
+                    <br>
                     <form method="post" enctype="multipart/form-data" class="text-center">
                         {% csrf_token %}
                         {% for user in team_members %}
                             <input type="checkbox" id="{{ user.id }}" name="team_members" value="{{ user.id }}">
                             <strong>{{ user.first_name }} {{ user.last_name }} - {{ user.position }} </strong><br><br>
                         {% endfor %}
-                     <div class="card-footer text-center">
-                        <button type="submit" class="btn btn-danger">Add</button>
-                         <a href="{% url 'my-projects' %}" class="btn btn-outline-secondary">Cancel</a>
-                     </div>
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-danger">Add</button>
+                            <a href="{% url 'my-projects' %}" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
                     </form>
                 </div>
             </div>

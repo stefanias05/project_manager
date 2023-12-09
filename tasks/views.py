@@ -10,31 +10,6 @@ from tasks.forms import TaskForm, TaskUpdateForm
 from tasks.models import Task
 
 
-# Create your views here.
-# class CreateTask(LoginRequiredMixin, SuccessMessageMixin, CreateView):
-#     form_class = TaskForm
-#     template_name = 'tasks/create_tasks.html'
-#     model = Task
-#     success_url = reverse_lazy('add-task')
-#
-#
-#     def get_initial(self):
-#         super(CreateTask, self).get_initial()
-#         user = self.request.user
-#         projects = Project.objects.filter(owner_id=user.id)
-#         self.initial = {"user": user, "project": projects}
-#         return self.initial
-#
-#     def form_valid(self, form):
-#         form.instance.user = MemberUser.objects.get(id=self.request.user.id)
-#         return super(CreateTask, self).form_valid(form)
-#
-#     def get_success_message(self, cleaned_data):
-#         task_name = self.object.title
-#         status_name = self.object.status
-#         success_message = f'You added the task "{task_name}" on your "{status_name}" "list!'
-#         return success_message
-
 @login_required
 def create_task(request):
     user = request.user
@@ -64,12 +39,14 @@ class DeleteViewTask(LoginRequiredMixin, DeleteView):
     template_name = 'tasks/delete-task.html'
     success_url = reverse_lazy('list-of-taks')
 
+
 @login_required
-def mark_as_done(request,task_id):
+def mark_as_done(request, task_id):
     task = Task.objects.get(pk=task_id)
     task.status = 'Done'
     task.save()
     return redirect('list-of-taks')
+
 
 @login_required
 def update_task(request, task_id):

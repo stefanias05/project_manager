@@ -59,7 +59,6 @@ class CreateProjectView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return super(CreateProjectView, self).form_valid(form)
 
 
-
 @login_required
 def detail_project(request, project_id):
     project = Project.objects.get(pk=project_id)
@@ -103,7 +102,8 @@ def allocate_member_project(request, project_id):
                 # if member.id not in allocate_member_id:
                 project.team_members.add(MemberUser.objects.get(id=member_id))
                 project.save()
-            notification = Notifications(receiver=project.owner, message=f"Ai alocat membru pe proiectul {project.name}")
+            notification = Notifications(receiver=project.owner,
+                                         message=f"Ai alocat membru pe proiectul {project.name}")
             notification.save()
             return redirect('detail-project', project.id)
     else:
@@ -127,5 +127,3 @@ def user_project(request):
     project_member = Project.objects.filter(team_members=user)
     return render(request, 'projects/user_projects.html',
                   {'allprojects': allprojects, 'projectsmember': project_member})
-
-

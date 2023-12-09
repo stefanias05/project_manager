@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %} Create Project {% endblock %}
-{%  block content %}
+{% block content %}
     <br><br><br><br><br><br><br><br>
     <div class="container-fluid">
         <div class="row">
@@ -36,13 +36,14 @@
                                                     aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <h4 class="text-primary">Are you sure you want to add the project {{ project.name}} ?</h4>
+                                            <h4 class="text-primary">Are you sure you want to add the
+                                                project {{ project.name }} ?</h4>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
                                                 No
                                             </button>
-                                            <button type="submit" class="btn btn-danger" >Yes</button>
+                                            <button type="submit" class="btn btn-danger">Yes</button>
                                         </div>
                                     </div>
                                 </div>

@@ -1,4 +1,3 @@
-
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordResetDoneView
 
@@ -7,7 +6,6 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView
-
 
 from members.forms import MemberRegisterForm, UserProfileForm
 from members.models import MemberUser
@@ -79,5 +77,4 @@ class UpdateUserView(UpdateView, LoginRequiredMixin):
         """imi afisez datele curente ale userului in interfata"""
         return self.request.user
 
-# class UserPasswordResetDone(PasswordResetDoneView):
-#     template_name = 'registration/password_reset_sent.html'
+

@@ -55,7 +55,7 @@ deleteProjectLinks.forEach(
 //         });
 // });
 document.addEventListener('DOMContentLoaded', (event) => {
-    document.getElementById('allnotifications').addEventListener('click', function() {
+    document.getElementById('allnotifications').addEventListener('click', function () {
         var myModal = new bootstrap.Modal(document.getElementById('notifications'), {});
         myModal.show();
     });

@@ -41,10 +41,12 @@
                                             <li><a href="{% url 'update-project' project.id %}"
                                                    class="dropdown-item">Update Project</a></li>
                                             <li><a href="#" class="dropdown-item deleteprojectlink" id="deleteproject"
-                                                   data-toggle="modal" data-target="#deleteprojectModal{{ project.id }}">
+                                                   data-toggle="modal"
+                                                   data-target="#deleteprojectModal{{ project.id }}">
                                                 Delete Project</a></li>
                                             <li>
-                                                <a href="{% url 'add-members-project' project_id=project.id %}" class="dropdown-item">
+                                                <a href="{% url 'add-members-project' project_id=project.id %}"
+                                                   class="dropdown-item">
                                                     Add members </a></li>
                                         </ul>
                                         {% include 'projects/delete_project.html' %}

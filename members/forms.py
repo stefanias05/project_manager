@@ -2,9 +2,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, User
 
 from django.forms import TextInput, EmailInput
 from members.models import MemberUser
-from django import  forms
-
-# from projects.models import Project
+from django import forms
 
 
 class NewAuthenticationForm(AuthenticationForm):
@@ -26,7 +24,7 @@ class MemberRegisterForm(UserCreationForm):
             {'class': 'form-control', 'placeholder': 'Please choose your password'})
         self.fields['password2'].widget.attrs.update(
             {'class': 'form-control', 'placeholder': 'Please confirm your password'})
-        self.fields['username']=forms.CharField(required=True, min_length=5, max_length=15)
+        self.fields['username'] = forms.CharField(required=True, min_length=5, max_length=15)
         self.fields['username'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter your username'})
 
     class Meta:
@@ -44,7 +42,7 @@ class MemberRegisterForm(UserCreationForm):
             'first_name': TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your first name'}),
             'last_name': TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your last name'}),
             'email': EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter your valid email address '}),
-            'position': TextInput(attrs={'class':'form-control','placeholder':'"Analist IT","Frontend Dev" etc..'}),
+            'position': TextInput(attrs={'class': 'form-control', 'placeholder': '"Analist IT","Frontend Dev" etc..'}),
 
         }
 
@@ -64,40 +62,19 @@ class MemberRegisterForm(UserCreationForm):
 
 
 
-# class MemberUpdateForm(forms.ModelForm):
-#
-#     class Meta:
-#         model = MemberUser
-#         fields = ['username',
-#                   'email',
-#                   'position',
-#                   'profile'
-#                   ]
-#         widgets ={
-#             'email': EmailInput(attrs={'class': 'form-control', 'placeholder': 'Update your email address '}),
-#             'position': TextInput(attrs={'class': 'form-control', 'placeholder': 'Update your position'}),
-#             'username': TextInput(attrs={'class': 'form-control', 'placeholder': ' Change your username'}),
-#
-#         }
-
-
 
 class UserProfileForm(UserChangeForm):
     class Meta:
         model = MemberUser
-        fields =[
-             'username',
-             'email',
-             'position',
-             'profile'
-         ]
+        fields = [
+            'username',
+            'email',
+            'position',
+            'profile'
+        ]
 
-        widgets ={
+        widgets = {
             'email': EmailInput(attrs={'class': 'form-control', 'placeholder': 'Update your email address '}),
             'position': TextInput(attrs={'class': 'form-control', 'placeholder': 'Update your position'}),
             'username': TextInput(attrs={'class': 'form-control', 'placeholder': ' Change your username'}),
         }
-
-
-
-

@@ -11,9 +11,9 @@ from project_manager.context_processors import get_user_project, get_user_tasks,
 
 def index(request):
     html_template = loader.get_template('home/index.html')
-    context = {
-    }
+    context = {}
     return HttpResponse(html_template.render(context, request))
+
 
 @login_required
 def dashboard(request):
@@ -23,12 +23,10 @@ def dashboard(request):
     users = allusers(request)
     return render(request, 'dashboard/dashboard.html',
                   {'ownerprojects': projects["allprojects"],
-                   'member_projects':projects['project_member'],
+                   'member_projects': projects['project_member'],
                    'alltasks': tasks['alltasks'],
                    'projectteam': projects['team'],
                    'number_project': projects['number_projects'],
                    'number_task': tasks['number_task'],
-                   'members': users['allmembers'],'user': user
+                   'members': users['allmembers'], 'user': user
                    })
-
-

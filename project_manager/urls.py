@@ -36,11 +36,13 @@ urlpatterns = [
                       auth_views.PasswordResetDoneView.as_view(template_name='registration/password_reset_sent.html'),
                       name="password_reset_done",
                   ),
-                  path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_set_form.html'),
+                  path('reset/<uidb64>/<token>/',
+                       auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_set_form.html'),
                        name=" password_reset_confirm"),
                   path(
                       "reset/done/",
-                      views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_confirmation.html'),
+                      views.PasswordResetCompleteView.as_view(
+                          template_name='registration/password_reset_confirmation.html'),
                       name="password_reset_complete",
                   ),
                   path('', include('django.contrib.auth.urls')),

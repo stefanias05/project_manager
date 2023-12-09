@@ -3,19 +3,19 @@ Body
  --------------*/
 
 body {
-  font-family: "Open Sans", sans-serif;
-  color: #444444;
+    font-family: "Open Sans", sans-serif;
+    color: #444444;
 }
 
 
 a {
-  text-decoration: none;
-  color: #d9232d;
+    text-decoration: none;
+    color: #d9232d;
 }
 
 a:hover {
-  color: #e24d55;
-  text-decoration: none;
+    color: #e24d55;
+    text-decoration: none;
 }
 
 h1,
@@ -24,339 +24,352 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Raleway", sans-serif;
+    font-family: "Raleway", sans-serif;
 }
 
 /*-------------------------
 Navbar
  -------------------------*/
 .navbar {
-  padding: 0;
+    padding: 0;
 }
 
 .navbar ul {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  list-style: none;
-  align-items: center;
-  text-decoration: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    text-decoration: none;
 }
 
 .navbar li {
-  position: relative;
-  text-decoration: none;
+    position: relative;
+    text-decoration: none;
 }
 
 .navbar a,
 .navbar a:focus {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 0 10px 30px;
-  font-family: "Poppins", sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  color: #556270;
-  white-space: nowrap;
-  transition: 0.3s;
-  text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0 10px 30px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #556270;
+    white-space: nowrap;
+    transition: 0.3s;
+    text-decoration: none;
 }
 
 .navbar a i,
 .navbar a:focus i {
-  font-size: 12px;
-  line-height: 0;
-  margin-left: 5px;
-  text-decoration: none;
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+    text-decoration: none;
 }
 
 .navbar a:hover,
 .navbar .active,
 .navbar .active:focus,
-.navbar li:hover>a {
-  color: #d9232d;
-  text-decoration: none;
+.navbar li:hover > a {
+    color: #d9232d;
+    text-decoration: none;
 }
 
 .navbar .getstarted,
 .navbar .getstarted:focus {
-  background: #d9232d;
-  padding: 8px 25px;
-  margin-left: 30px;
-  border-radius: 4px;
-  font-weight: 400;
-  color: #fff;
-  text-decoration: none;
+    background: #d9232d;
+    padding: 8px 25px;
+    margin-left: 30px;
+    border-radius: 4px;
+    font-weight: 400;
+    color: #fff;
+    text-decoration: none;
 }
 
 .navbar .getstarted:hover,
 .navbar .getstarted:focus:hover {
-  color: #fff;
-  background: #e1444d;
-  text-decoration: none;
+    color: #fff;
+    background: #e1444d;
+    text-decoration: none;
 }
 
 .navbar .dropdown ul {
-  display: block;
-  position: absolute;
-  left: 14px;
-  top: calc(100% + 30px);
-  margin: 0;
-  padding: 10px 0;
-  z-index: 99;
-  opacity: 0;
-  visibility: hidden;
-  background: #fff;
-  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
-  transition: 0.3s;
-  text-decoration: none;
+    display: block;
+    position: absolute;
+    left: 14px;
+    top: calc(100% + 30px);
+    margin: 0;
+    padding: 10px 0;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    background: #fff;
+    box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+    transition: 0.3s;
+    text-decoration: none;
 }
 
 .navbar .dropdown ul li {
-  min-width: 200px;
-  text-decoration: none;
+    min-width: 200px;
+    text-decoration: none;
 }
 
 .navbar .dropdown ul a {
-  padding: 10px 20px;
-  font-size: 15px;
-  text-transform: none;
-  font-weight: 400;
-  text-decoration: none;
+    padding: 10px 20px;
+    font-size: 15px;
+    text-transform: none;
+    font-weight: 400;
+    text-decoration: none;
 }
 
 .navbar .dropdown ul a i {
-  font-size: 12px;
-  text-decoration: none;
+    font-size: 12px;
+    text-decoration: none;
 }
 
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
-.navbar .dropdown ul li:hover>a {
-  color: #d9232d;
-  text-decoration: none;
+.navbar .dropdown ul li:hover > a {
+    color: #d9232d;
+    text-decoration: none;
 }
 
-.navbar .dropdown:hover>ul {
-  opacity: 1;
-  top: 100%;
-  visibility: visible;
-  text-decoration: none;
+.navbar .dropdown:hover > ul {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
+    text-decoration: none;
 }
 
 .navbar .dropdown .dropdown ul {
-  top: 0;
-  left: calc(100% - 30px);
-  visibility: hidden;
-  text-decoration: none;
+    top: 0;
+    left: calc(100% - 30px);
+    visibility: hidden;
+    text-decoration: none;
 }
 
-.navbar .dropdown .dropdown:hover>ul {
-  opacity: 1;
-  top: 0;
-  left: 100%;
-  visibility: visible;
-  text-decoration: none;
+.navbar .dropdown .dropdown:hover > ul {
+    opacity: 1;
+    top: 0;
+    left: 100%;
+    visibility: visible;
+    text-decoration: none;
 }
 
 @media (max-width: 1366px) {
-  .navbar .dropdown .dropdown ul {
-    left: -90%;
-  }
+    .navbar .dropdown .dropdown ul {
+        left: -90%;
+    }
 
-  .navbar .dropdown .dropdown:hover>ul {
-    left: -100%;
-  }
+    .navbar .dropdown .dropdown:hover > ul {
+        left: -100%;
+    }
 }
+
 /*------------------------
 Header
 
  -------------*/
 #header {
-  background: white;
-  transition: all 0.5s;
-  z-index: 997;
-  padding: 20px 0;
-  text-decoration: none;
+    background: white;
+    transition: all 0.5s;
+    z-index: 997;
+    padding: 20px 0;
+    text-decoration: none;
 }
 
 #header.header-scrolled {
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-  padding: 12px 0;
-  text-decoration: none;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    padding: 12px 0;
+    text-decoration: none;
 }
 
 #header.header-inner-pages {
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-  text-decoration: none;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
 }
 
 #header .logo {
-  font-size: 28px;
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-  font-weight: 700;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #d9232d;
+    font-size: 28px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #d9232d;
 
 }
+
 #header .logo a {
-  color: #556270;
-  text-decoration:none;
+    color: #556270;
+    text-decoration: none;
 }
+
 /*------------------------------
 Section General
  ---------------------------*/
 
 section {
-  padding: 60px 0;
-  overflow: hidden;
+    padding: 60px 0;
+    overflow: hidden;
 }
 
 .services .icon-box {
-  background-color: #f8f9fa;
+    background-color: #f8f9fa;
 }
 
 .section-title {
-  padding-bottom: 40px;
+    padding-bottom: 40px;
 }
 
-.section-title h4,b {
-  font-size: 14px;
-  font-weight: 500;
-  padding: 0;
-  line-height: 1px;
-  margin: 0 0 5px 0;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: red;
-  font-family: "Comic Sans MS", sans-serif;
+.section-title h4, b {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0;
+    line-height: 1px;
+    margin: 0 0 5px 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: red;
+    font-family: "Comic Sans MS", sans-serif;
 }
 
 .section-title h4::after {
-  content: "";
-  width: 120px;
-  height: 1px;
-  display: inline-block;
-  background: #e6636a;
-  margin: 4px 10px;
+    content: "";
+    width: 120px;
+    height: 1px;
+    display: inline-block;
+    background: #e6636a;
+    margin: 4px 10px;
 }
 
 .section-title p {
-  margin: 0;
-  font-size: 36px;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-family: sans-serif;
-  color: #556270;
+    margin: 0;
+    font-size: 36px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    color: #556270;
 }
+
 /*------------------
 Carousel
 ------------------------ */
 
 #hero {
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(63, 73, 83, 0.8);
-  overflow: hidden;
-  position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(63, 73, 83, 0.8);
+    overflow: hidden;
+    position: relative;
 }
+
 #hero .container {
-  text-align: center;
-  text-justify: auto;
+    text-align: center;
+    text-justify: auto;
 }
 
 #hero .carousel-item {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
+
 #hero h2 {
-  color: #fff;
-  margin-bottom: 20px;
-  font-size: 48px;
-  font-weight: 700;
-  text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
 }
+
 #hero p {
-  animation-delay: 0.4s;
-  margin: 0 auto 30px auto;
-  color: #fff;
-  text-align: center;
+    animation-delay: 0.4s;
+    margin: 0 auto 30px auto;
+    color: #fff;
+    text-align: center;
 }
 
 #hero .carousel-inner .carousel-item {
-  transition-property: opacity;
-  background-position: center;
+    transition-property: opacity;
+    background-position: center;
 }
+
 #hero .carousel-indicators li {
-  list-style-type: none;
-  cursor: pointer;
-  background: #fff;
-  overflow: hidden;
-  border: 0;
-  width: 12px;
-  height: 12px;
-  border-radius: 50px;
-  opacity: 0.6;
-  transition: 0.3s;
-  align-content: center;
+    list-style-type: none;
+    cursor: pointer;
+    background: #fff;
+    overflow: hidden;
+    border: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50px;
+    opacity: 0.6;
+    transition: 0.3s;
+    align-content: center;
 }
 
 
 /*------------------------
 Form header and labels
  --------------------*/
- div .card-header {
- background-color: #e84343;
+div .card-header {
+    background-color: #e84343;
     color: #fff;
 }
- div .card-body a{
-   text-decoration: none;
- }
+
+div .card-body a {
+    text-decoration: none;
+}
+
 label {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .form-control {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 li::marker {
-  color: red;
-  text-decoration-color: #556270;
+    color: red;
+    text-decoration-color: #556270;
 }
 
-.helptext{
-  color: #556270;
+.helptext {
+    color: #556270;
 }
+
 /*----------------
 team
  --------------*/
 
-.team{
-  color: #e24d55;
-  font-size: 24px;
-  font-weight: bold;
-  width: 12px;
-  height: 12px;
-  text-align: center;
+.team {
+    color: #e24d55;
+    font-size: 24px;
+    font-weight: bold;
+    width: 12px;
+    height: 12px;
+    text-align: center;
 
 }
+
 /*-----------------
 team members-detail project
  */
 
-.card-img{
-  width: 100px;
-  height: 100px;
-  border-radius: 70%;
-  align-content: center;
-  object-fit: cover; /*ma asigur ca img se taie corespunzator*/
+.card-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 70%;
+    align-content: center;
+    object-fit: cover; /*ma asigur ca img se taie corespunzator*/
 }
+
 /*
 Registration-password_reset_sent
 */

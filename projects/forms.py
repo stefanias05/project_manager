@@ -72,14 +72,5 @@ class ProjectAllocationMembersForm(forms.Form):
         queryset=MemberUser.objects.all(),
         widget=forms.CheckboxSelectMultiple,
         label="Select memebers",
-        required= False
+        required=False
     )
-    
-
-        
-    
-    
-
-
-
-
