@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
-
+# import sys
 from dotenv import load_dotenv
 
 # Build paths inside the projects like this: BASE_DIR / 'subdir'.
@@ -139,6 +139,8 @@ SESSION_SAVE_EVERY_REQUEST = True
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
 
 #SMTP Config
 

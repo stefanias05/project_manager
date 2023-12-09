@@ -22,15 +22,16 @@
             <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
             <li>
                 <a href="#" id="allnotifications" data-toggle="modal"
-                   data-target="#notifications" data-url="{% url 'notifications' %}">
+                   data-target="#notifications">
                     <i class="fa-regular fa-bell fa-xl"
                        style="color: #910808;"></i><span
                         class="badge text-bg-secondary notificationslink"></span></a>
             </li>
+            {#            {% include 'notifications/view_notifications.html' %}#}
             <li>
                 <div class="dropdown">
                     <a class="d-flex align-items-center show" href="#" role="button"
-                       data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
+                       data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div>
                             <div class="avatar">
                                 <img src="{{ user.memberuser.profile.url }}" alt="img" class="rounded-circle"
@@ -41,10 +42,10 @@
                             <span class="h6">{{ user.first_name }}</span>
                         </div>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-endshow" data-bs-popper="static">
-                        <a class="dropdown-item" href="{% url 'edit-profile' %}"> Edit Profile</a>
-                        <a class="dropdown-item" href="{% url 'logout' %}"> Log Out</a>
-                    </div>
+                    <ul class="dropdown-menu dropdown-menu-endshow" data-bs-popper="static">
+                        <li><a class="dropdown-item" href="{% url 'edit-profile' %}"> Edit Profile</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}"> Log Out</a></li>
+                    </ul>
                 </div>
             </li>
         {% else %}
@@ -53,7 +54,10 @@
         {% endif %}
     </ul>
     <i class="bi bi-list mobile-nav-toggle"></i>
+
 </nav>
+
+{#<script src="{% static 'js/modal.js' %}"></script>#}
 
 
 

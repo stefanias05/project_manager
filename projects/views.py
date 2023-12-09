@@ -86,6 +86,7 @@ def allocate_member_project(request, project_id):
     """
     Alocare membrii disponibili pe proiect.
     Se afiseaza lista cu toti userii aplicatiei disponibili pt alocare pe proiecte.
+    Trimit notificare catre user daca aloca membru pe proiect
     :param request:
     :param project_id:
     :return:
@@ -102,13 +103,12 @@ def allocate_member_project(request, project_id):
                 # if member.id not in allocate_member_id:
                 project.team_members.add(MemberUser.objects.get(id=member_id))
                 project.save()
+            notification = Notifications(receiver=project.owner, message=f"Ai alocat membru pe proiectul {project.name}")
+            notification.save()
             return redirect('detail-project', project.id)
     else:
         team_members = MemberUser.objects.exclude(
             user_ptr_id__in=project.team_members.values_list("id", flat=False))
-
-        notification = Notifications(receiver=project.owner, message=f"Ai alocat membru pe proiectul {project.name}")
-        notification.save()
 
         project.check_deadline()
 

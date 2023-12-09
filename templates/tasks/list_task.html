@@ -1,12 +1,8 @@
 {% extends 'base.html' %}
-{% block title %} Tasks {% endblock %}
 {% load static %}
+{% block title %} Tasks {% endblock %}
 {% block content %}
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br><br><br><br><br><br><br><br><br>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 offset-md-3">
@@ -20,7 +16,7 @@
                         <th>Timeline</th>
                         <th>Project</th>
                         <th>Action</th>
-                        <th> </th>
+                        <th></th>
                         </thead>
                         <tbody>
                         {% for task in alltasks %}
@@ -41,17 +37,19 @@
                                             <li><a href="{% url 'update_task' task_id=task.id %}" class="dropdown-item">Update
                                                 your task </a></li>
                                             <li><a href="#" class="dropdown-item deletetasklink" id="deleteTask"
-                                                   data-toggle="modal" data-target ="#deleteModal{{ task.id }}">
+                                                   data-toggle="modal" data-target="#deleteModal{{ task.id }}">
                                                 Delete Task</a></li>
                                             <li><a href="#" class="dropdown-item detailtasklink"
-                                                   id="detailTask" data-toggle="modal" data-target="#detailModal{{ task.id }}">
+                                                   id="detailTask" data-toggle="modal"
+                                                   data-target="#detailModal{{ task.id }}">
                                                 Detail Task</a></li>
                                         </ul>
                                         {% include 'tasks/detail_task.html' %}
-                                        {% include 'tasks/delete-task.html'  %}
+                                        {% include 'tasks/delete-task.html' %}
                                     </div>
                                 </td>
-                                <td><a href="{% url 'mark-done' task_id=task.id %}" class="btn btn-danger">Mark as done</a></td>
+                                <td><a href="{% url 'mark-done' task_id=task.id %}" class="btn btn-danger">Mark as
+                                    done</a></td>
                             </tr>
                         {% endfor %}
                         </tbody>

@@ -12,4 +12,5 @@ def view_notifications(request):
         notif.message_read = True
         notif.save()
 
-    return render(request, 'notifications/view_notifications.html', {'notifications': notification})
+    return render(request, 'notifications/view_notifications.html',
+                  {'notifications': notification})

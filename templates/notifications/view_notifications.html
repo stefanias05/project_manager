@@ -1,13 +1,10 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block title %} Notifications {% endblock %}
 {% block content %}
-    <br><br><br><br><br>
     <div class="container-fluid">
+      <br><br><br><br><br>
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="modal fade" id="notifications" data-bs-backdrop="static" data-bs-keyboard="false"
-                     tabindex="-1" aria-labelledby="notificationsLabel" aria-hidden="true">
+                     tabindex="-1" aria-labelledby="notificationsLabel" aria-hidden="true" style="display: none">
                     <div class="modal-dialog modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
